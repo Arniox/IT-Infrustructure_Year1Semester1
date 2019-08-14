@@ -1,0 +1,11 @@
+	.ORIG	x3000
+;;; Test NOT instructions 
+	AND	R0,R0,#0
+	NOT	R0,R0
+	AND	R1,R1,#0
+	ADD	R1,R1,#1
+	NOT	R1,R1
+	NOT	R1,R1
+	ADD	R0,R0,R1
+	HALT
+	.END

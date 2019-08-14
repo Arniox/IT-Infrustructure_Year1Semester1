@@ -1,0 +1,31 @@
+	.ORIG	x3000
+;;; Test LD instructions 
+	LD	R1,TEST
+	ADD	R1,R1,#15
+	ADD	R1,R1,#10
+	ST	R1,TEST
+	LD	R2,TEST
+;;; Test LEA instruction
+	LEA	R2,TEST
+	ST	R2,INDIR
+;;; Test LDI and STI instructions
+	LDI	R3,INDIR
+	ADD	R3,R3,#10
+	STI	R3,INDIR
+;;; Test LDR and STR instructions
+	AND	R1,R1,#0
+	LEA	R2,ARRAY
+	STR	R1,R2,#0
+	ADD	R1,R1,#1
+	STR	R1,R2,#1
+	ADD	R1,R1,#1
+	STR	R1,R2,#2
+	AND	R0,R0,#0
+	LDR	R0,R2,#2
+	LDR	R0,R2,#1
+	LDR	R0,R2,#0
+	HALT	
+TEST	.FILL	xfff1
+INDIR	.FILL	x0000
+ARRAY	.BLKW	6
+	.END
